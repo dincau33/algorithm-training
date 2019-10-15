@@ -6,7 +6,7 @@ import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-class BSTContructionTest {
+class BSTConstructionTest {
 	static BSTConstruction.BST test1;
 	static BSTConstruction.BST test2;
 	static BSTConstruction.BST test3;
