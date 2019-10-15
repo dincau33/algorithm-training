@@ -86,7 +86,7 @@
 
      <!-- techincally, need (edu.princeton.cs.algs4.)? instead of .* for package version -->
      <!-- technically, need \. instead of . -->
-     <Match classregex=".*(BellmanFordSP|DijkstraSP|DynamicProgrammingSP)" >
+     <Match classregex=".*(BellmanFordSP|DijkstraSP|DynamicThreeNumberSummingSP)" >
        <BugPattern name="FE_FLOATING_POINT_EQUALITY" />
      </Match>
 
