@@ -8,7 +8,7 @@ public class BSTValidation {
 	private static boolean validateBst(BST tree, int min, int max) {
 		if (tree == null) return true;
 		if (tree.value < min || tree.value > max) return false;
-		return (validateBst(tree.left, min, tree.value - 1) && validateBst(tree.right, tree.value, max));
+		return validateBst(tree.left, min, tree.value - 1) && validateBst(tree.right, tree.value, max);
 	}
 
 	static class BST {
