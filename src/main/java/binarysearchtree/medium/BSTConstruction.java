@@ -48,9 +48,6 @@ public class BSTConstruction {
 				if (value == this.value) {
 					if (this.left != null && this.right != null) {
 						// 0 - If there are 2 leafs, find minimum in the right substree of node, replace node with min and delete min from right subtree
-						//BST min = this.right.getMin();
-						//this.value = min.value;
-						//this.right.remove(this.value, this);
 						this.value = this.right.getMinValue();
 						this.right.remove(this.value, this);
 						// 1 - If there is only one leaf then remove and connect the leaf to parent tree
@@ -60,39 +57,24 @@ public class BSTConstruction {
 							this.right = this.left.right;
 							this.left = this.left.left;
 						} else if (parent.left == this) parent.left = this.left;
-						else {
-							parent.right = this.left;
-						}
+						else parent.right = this.left;
 					} else {
 						if (parent == null) {
 							this.value = this.right.value;
 							this.left = this.right.left;
 							this.right = this.right.right;
 						} else if (parent.left == this) parent.left = this.right;
-						else {
-							parent.right = this.right;
-						}
+						else parent.right = this.right;
 					}
 				}
 			}
 			return this;
-	}
+		}
 
-	private BST getMin() {
-		if (this.left != null) {
-			return this.left.getMin();
-		} else return this;
+		private int getMinValue() {
+			if (this.left != null) {
+				return this.left.getMinValue();
+			} else return this.value;
+		}
 	}
-
-	private int getMinValue() {
-		if (this.left != null) {
-			return this.left.getMinValue();
-		} else return this.value;
-	}
-
-	private BST removeMin() {
-		if (this.left == null) return this.right;
-		return this.left.removeMin();
-	}
-}
 }
