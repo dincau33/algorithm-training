@@ -20,5 +20,17 @@ public class NthFibonacci {
 		memo[n] = getNthFibMemo(n - 2, memo) + getNthFibMemo(n - 1, memo);
 		return memo[n];
 	}
-	
+
+	// O(n) time | O(1) space
+	public static int getNthFibBottomUp(int n) {
+		if (n == 1) return 0;
+		int resultMinus = 0;
+		int result = 1;
+		for (int i = 3; i <= n; i++) {
+			int tmp = result;
+			result = result + resultMinus;
+			resultMinus = tmp;
+		}
+		return result;
+	}
 }
