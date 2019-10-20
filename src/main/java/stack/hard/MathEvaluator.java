@@ -5,7 +5,7 @@ import java.util.*;
 public class MathEvaluator {
 
 	private enum Operator {
-		ADD(1), SUBTRACT(2), MULTIPLY(3), DIVIDE(4);
+		ADD(1), SUBTRACT(2), MULTIPLY(3), DIVIDE(4), MINUS(5);
 		final int precedence;
 
 		Operator(int p) {
@@ -18,6 +18,7 @@ public class MathEvaluator {
 		put("-", Operator.SUBTRACT);
 		put("*", Operator.MULTIPLY);
 		put("/", Operator.DIVIDE);
+		put("minus", Operator.MINUS);
 	}};
 
 	private static boolean isHigherPrecedence(String op1, String op2) {
@@ -91,13 +92,8 @@ public class MathEvaluator {
 				// isNegative if - is prefixed by another operator
 				// isNegative if - is prefixed by left parenthesis
 				if (tokens[i] == '-' && (previous.isEmpty() || operators.containsKey(previous) || isLeftParenthesis(previous))) {
-					StringBuffer sbuf = new StringBuffer();
-					sbuf.append(tokens[i++]);
-					while (i < tokens.length && isDouble(tokens[i]))
-						sbuf.append(tokens[i++]);
-					previous = sbuf.toString();
+					previous = "minus";
 					decomposedExpression.add(previous);
-					i--;
 				} else {
 					// Operator
 					previous = Character.toString(tokens[i]);
@@ -110,17 +106,18 @@ public class MathEvaluator {
 
 	private double applyOperator(Stack<String> operator, Stack<Double> operand) {
 		double rightOperand = operand.pop();
-		double leftOperand = !operand.empty() ? operand.pop() : 0;
 		switch (operators.get(operator.pop())) {
+			case MINUS:
+				return -rightOperand;
 			case ADD:
-				return leftOperand + rightOperand;
+				return operand.pop() + rightOperand;
 			case SUBTRACT:
-				return leftOperand - rightOperand;
+				return operand.pop() - rightOperand;
 			case MULTIPLY:
-				return leftOperand * rightOperand;
+				return operand.pop() * rightOperand;
 			case DIVIDE:
 				if (rightOperand == 0) throw new UnsupportedOperationException();
-				return leftOperand / rightOperand;
+				return operand.pop() / rightOperand;
 		}
 		return 0;
 	}
