@@ -1,9 +1,6 @@
 package stack.hard;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.NoSuchElementException;
-import java.util.Stack;
+import java.util.*;
 
 public class MathEvaluator {
 
@@ -41,7 +38,7 @@ public class MathEvaluator {
 
 		Stack<Double> operand = new Stack<>();
 		Stack<String> operator = new Stack<>();
-		String[] tokens = parse(expression);
+		ArrayList<String> tokens = parse(expression);
 
 		for (String token : tokens) {
 			if (operators.containsKey(token)) {
@@ -70,12 +67,24 @@ public class MathEvaluator {
 		return operand.pop();
 	}
 
-	private String[] parse(String expression) {
-		// TO DO: to implement
-		// Need to support negative
-		// split expression into character
-		// Make sure negative and literal are combined
-		return null;
+	// TO DO: add support for negative
+	private ArrayList<String> parse(String expression) {
+		char[] tokens = expression.toCharArray();
+		ArrayList<String> decomposedExpression = new ArrayList<>();
+		for (int i = 0; i < tokens.length; i++) {
+			if (tokens[i] == ' ') continue;
+
+			if (tokens[i] >= '0' && tokens[i] <= '9') {
+				StringBuffer sbuf = new StringBuffer();
+				while (i < tokens.length && tokens[i] >= '0' && tokens[i] <= '9')
+					sbuf.append(tokens[i++]);
+				decomposedExpression.add(sbuf.toString());
+				i--;
+			} else {
+				decomposedExpression.add(Character.toString(tokens[i]));
+			}
+		}
+		return decomposedExpression;
 	}
 
 	private double applyOperator(Stack<String> operator, Stack<Double> operand) {
