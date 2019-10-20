@@ -77,6 +77,7 @@ public class MathEvaluator {
 		ArrayList<String> decomposedExpression = new ArrayList<>();
 		String previous = "";
 		for (int i = 0; i < tokens.length; i++) {
+			// Literal
 			if (isDouble(tokens[i])) {
 				StringBuffer sbuf = new StringBuffer();
 				while (i < tokens.length && isDouble(tokens[i]))
@@ -85,7 +86,11 @@ public class MathEvaluator {
 				decomposedExpression.add(previous);
 				i--;
 			} else {
-				if ((previous.isEmpty() || !isDouble(tokens[i - 1])) && tokens[i] == '-') {
+				// Negative literal
+				// isNegative if - is prefixed by nothing -1
+				// isNegative if - is prefixed by another operator
+				// isNegative if - is prefixed by left parenthesis
+				if (tokens[i] == '-' && (previous.isEmpty() || operators.containsKey(previous) || isLeftParenthesis(previous))) {
 					StringBuffer sbuf = new StringBuffer();
 					sbuf.append(tokens[i++]);
 					while (i < tokens.length && isDouble(tokens[i]))
@@ -94,6 +99,7 @@ public class MathEvaluator {
 					decomposedExpression.add(previous);
 					i--;
 				} else {
+					// Operator
 					previous = Character.toString(tokens[i]);
 					decomposedExpression.add(previous);
 				}
@@ -104,7 +110,7 @@ public class MathEvaluator {
 
 	private double applyOperator(Stack<String> operator, Stack<Double> operand) {
 		double rightOperand = operand.pop();
-		double leftOperand = operand.pop();
+		double leftOperand = !operand.empty() ? operand.pop() : 0;
 		switch (operators.get(operator.pop())) {
 			case ADD:
 				return leftOperand + rightOperand;
