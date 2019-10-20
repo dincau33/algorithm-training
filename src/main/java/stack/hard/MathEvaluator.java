@@ -1,70 +1,98 @@
 package stack.hard;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.Stack;
 
 public class MathEvaluator {
 
+	private enum Operator {
+		ADD(1), SUBTRACT(2), MULTIPLY(3), DIVIDE(4);
+		final int precedence;
+
+		Operator(int p) {
+			precedence = p;
+		}
+	}
+
+	private static Map<String, Operator> operators = new HashMap<String, Operator>() {{
+		put("+", Operator.ADD);
+		put("-", Operator.SUBTRACT);
+		put("*", Operator.MULTIPLY);
+		put("/", Operator.DIVIDE);
+	}};
+
+	private static boolean isHigherPrecedence(String op1, String op2) {
+		if (operators.containsKey(op1) && operators.containsKey(op2)) throw new NoSuchElementException();
+		return operators.get(op2).precedence >= operators.get(op1).precedence;
+	}
+
+	private static boolean isLeftParenthesis(String s) {
+		return s.equals("(");
+	}
+
+	private static boolean isRightParenthesis(String s) {
+		return s.equals(")");
+	}
+
 	public double calculate(String expression) {
-		return parse(expression).evaluate();
-	}
+		if (expression.isEmpty()) return 0;
 
-	private ExpressionTree parse(String Expression) {
-		ExpressionTree tree = null;
-		return tree;
-	}
+		Stack<Double> operand = new Stack<>();
+		Stack<String> operator = new Stack<>();
+		String[] tokens = parse(expression);
 
-	protected class ExpressionTree {
-		public ExpressionTree left;
-		public ExpressionTree right;
-		private Object value;
-
-		protected ExpressionTree(Object value) {
-			this.value = value;
+		for (String token : tokens) {
+			if (operators.containsKey(token)) {
+				// if operator has a lower precedence than top operator
+				// apply top operator to the 2 top operands
+				while (!operator.isEmpty() && isHigherPrecedence(token, operator.peek()))
+					operand.push(applyOperator(operator, operand));
+				operator.push(token);
+			} else if (isLeftParenthesis(token)) {
+				operator.push(token);
+			} else if (isRightParenthesis(token)) {
+				// if closing parenthesis apply top operator to the 2 top operands
+				// as long opening parenthesis is not reached.
+				while (!isLeftParenthesis(operator.peek()))
+					operand.push(applyOperator(operator, operand));
+				operator.pop(); // remove left parenthesis
+			} else {
+				operand.push(Double.parseDouble(token));
+			}
 		}
 
-		protected double evaluate() {
-			if (this == null) throw new NullPointerException();
-			if (this.value instanceof Double) return (Double) this.value;
-			if (this.value instanceof Operator) return ((Operator) this.value).apply(this.left, this.right);
-			return -1;
+		while (!operator.isEmpty()) {
+			operand.push(applyOperator(operator, operand));
 		}
+
+		return operand.pop();
 	}
 
-	protected interface Operator {
-		double apply(ExpressionTree left, ExpressionTree right);
+	private String[] parse(String expression) {
+		// TO DO: to implement
+		// Need to support negative
+		// split expression into character
+		// Make sure negative and literal are combined
+		return null;
 	}
 
-	protected class AddOperator implements Operator {
-		static final char symbol = '+';
-
-		public double apply(ExpressionTree left, ExpressionTree right) {
-			return left.evaluate() + right.evaluate();
+	private double applyOperator(Stack<String> operator, Stack<Double> operand) {
+		double rightOperand = operand.pop();
+		double leftOperand = operand.pop();
+		switch (operators.get(operator.pop())) {
+			case ADD:
+				return leftOperand + rightOperand;
+			case SUBTRACT:
+				return leftOperand - rightOperand;
+			case MULTIPLY:
+				return leftOperand * rightOperand;
+			case DIVIDE:
+				if (rightOperand == 0) throw new UnsupportedOperationException();
+				return leftOperand / rightOperand;
 		}
-	}
-
-	protected class SubstractOperator implements Operator {
-		static final char symbol = '-';
-
-		public double apply(ExpressionTree left, ExpressionTree right) {
-			if (left == null) return -right.evaluate();
-			return left.evaluate() - right.evaluate();
-		}
-	}
-
-	protected class MultiplyOperator implements Operator {
-		static final char symbol = '*';
-
-		public double apply(ExpressionTree left, ExpressionTree right) {
-			return left.evaluate() * right.evaluate();
-		}
-	}
-
-	protected class DivideOperator implements Operator {
-		static final char symbol = '+';
-
-		public double apply(ExpressionTree left, ExpressionTree right) {
-			return left.evaluate() / right.evaluate();
-		}
+		return 0;
 	}
 
 }
