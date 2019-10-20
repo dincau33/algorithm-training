@@ -21,7 +21,8 @@ public class MathEvaluator {
 	}};
 
 	private static boolean isHigherPrecedence(String op1, String op2) {
-		if (operators.containsKey(op1) && operators.containsKey(op2)) throw new NoSuchElementException();
+		if (isLeftParenthesis(op2)) return false;
+		if (!operators.containsKey(op1) || !operators.containsKey(op2)) throw new NoSuchElementException();
 		return operators.get(op2).precedence >= operators.get(op1).precedence;
 	}
 
@@ -31,6 +32,10 @@ public class MathEvaluator {
 
 	private static boolean isRightParenthesis(String s) {
 		return s.equals(")");
+	}
+
+	private static boolean isDouble(char c) {
+		return (c >= '0' && c <= '9') || c == '.';
 	}
 
 	public double calculate(String expression) {
@@ -67,21 +72,31 @@ public class MathEvaluator {
 		return operand.pop();
 	}
 
-	// TO DO: add support for negative
 	private ArrayList<String> parse(String expression) {
-		char[] tokens = expression.toCharArray();
+		char[] tokens = expression.replaceAll("\\s", "").toCharArray();
 		ArrayList<String> decomposedExpression = new ArrayList<>();
+		String previous = "";
 		for (int i = 0; i < tokens.length; i++) {
-			if (tokens[i] == ' ') continue;
-
-			if (tokens[i] >= '0' && tokens[i] <= '9') {
+			if (isDouble(tokens[i])) {
 				StringBuffer sbuf = new StringBuffer();
-				while (i < tokens.length && tokens[i] >= '0' && tokens[i] <= '9')
+				while (i < tokens.length && isDouble(tokens[i]))
 					sbuf.append(tokens[i++]);
-				decomposedExpression.add(sbuf.toString());
+				previous = sbuf.toString();
+				decomposedExpression.add(previous);
 				i--;
 			} else {
-				decomposedExpression.add(Character.toString(tokens[i]));
+				if ((previous.isEmpty() || !isDouble(tokens[i - 1])) && tokens[i] == '-') {
+					StringBuffer sbuf = new StringBuffer();
+					sbuf.append(tokens[i++]);
+					while (i < tokens.length && isDouble(tokens[i]))
+						sbuf.append(tokens[i++]);
+					previous = sbuf.toString();
+					decomposedExpression.add(previous);
+					i--;
+				} else {
+					previous = Character.toString(tokens[i]);
+					decomposedExpression.add(previous);
+				}
 			}
 		}
 		return decomposedExpression;
