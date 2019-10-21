@@ -1,6 +1,7 @@
 package arrays.medium;
 
 public class KadaneAlgorithm {
+	// O(n) time | O(1)
 	public static int kadanesAlgorithm(int[] array) {
 		int max = Integer.MIN_VALUE;
 		int sum = 0;

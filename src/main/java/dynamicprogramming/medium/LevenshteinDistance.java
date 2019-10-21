@@ -1,6 +1,7 @@
 package dynamicprogramming.medium;
 
 public class LevenshteinDistance {
+	// O(m*n) time | O(m*n) space
 	public static int levenshteinDistance(String str1, String str2) {
 		int[][] mins = new int[str1.length() + 1][str2.length() + 1];
 		for (int r = 0; r <= str1.length(); r++) {
