@@ -16,6 +16,7 @@ public class BreadthFirstSearch {
 			this.name = name;
 		}
 
+		// O(V + E) time | O (V) space
 		public ArrayList<String> breadthFirstSearch(ArrayList<String> array) {
 			LinkedList<Node> queue = new LinkedList<>();
 
