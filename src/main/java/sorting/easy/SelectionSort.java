@@ -3,7 +3,7 @@ package sorting.easy;
 public class SelectionSort {
 	// O(n^2) time | O(1) space
 	public static int[] selectionSort(int[] array) {
-		for (int i=0;i<array.length;i++) {
+		for (int i = 0; i < array.length; i++) {
 			int minIndex = findMinIndex(array, i);
 			swap(array, i, minIndex);
 		}
@@ -12,7 +12,7 @@ public class SelectionSort {
 
 	private static int findMinIndex(int[] array, int start) {
 		int minIndex = start;
-		for(int i=start; i<array.length; i++) {
+		for (int i = start; i < array.length; i++) {
 			if (array[i] < array[minIndex]) minIndex = i;
 		}
 		return minIndex;
@@ -20,7 +20,7 @@ public class SelectionSort {
 
 	private static void swap(int[] array, int i, int j) {
 		int tmp = array[i];
-		array[i] = array [j];
+		array[i] = array[j];
 		array[j] = tmp;
 	}
 }
