@@ -12,15 +12,19 @@ package arrays.medium;
 public class SumOfIntervals {
 	public static int sumIntervals(int[][] intervals) {
 		int sum = 0;
-		int[] previousInterval = {Integer.MIN_VALUE, Integer.MIN_VALUE};
 		if (intervals == null) return sum;
 
 		sortIntervals(intervals);
+		int currentMaxRightBand = Integer.MIN_VALUE;
 		for (int[] interval:intervals) {
-			if (previousInterval[1] <= interval[0]) sum += interval[1] - interval[0];
-			else if (previousInterval[1] < interval[1])
-				sum += interval[1] - previousInterval[1];
-			previousInterval = interval;
+			if (currentMaxRightBand <= interval[0]) {
+				sum += interval[1] - interval[0];
+				currentMaxRightBand = interval[1];
+			}
+			else if (currentMaxRightBand < interval[1]) {
+				sum += interval[1] - currentMaxRightBand;
+				currentMaxRightBand = interval[1];
+			}
 		}
 		return sum;
 	}
