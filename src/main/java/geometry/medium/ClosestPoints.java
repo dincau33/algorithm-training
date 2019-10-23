@@ -10,8 +10,12 @@ import java.util.List;
 public class ClosestPoints {
 	// O(n * log(n)) time
 	public static List<Point> closestPair(List<Point> points) {
-		// O(
-		points.sort(new SortPair());
+		for (Point p:points) {
+			if (p == null) throw new IllegalArgumentException();
+		}
+
+		points.sort(new SortPairByX());
+		points.sort(new SortPairByY());
 
 		// If there are 2 or 3 points use brute force approach
 		if (points.size() <= 3) return bruteForce(points);
@@ -44,7 +48,7 @@ public class ClosestPoints {
 
 	public static List<Point> bruteForce(List<Point> points) {
 		List<Point> closest = new ArrayList<>();
-		Double shortestDistance = Double.MAX_VALUE;
+		Double shortestDistance = Double.POSITIVE_INFINITY;
 		for (int i = 0; i < points.size() - 1; i++) {
 			Point p1 = points.get(i);
 			for (int j = i + 1; j < points.size(); j++) {
@@ -71,7 +75,7 @@ public class ClosestPoints {
 
 	public static List<Point> getClosestStripPoints(List<Point> points, Double distance) {
 		List<Point> closest = new ArrayList<>();
-		Double shortestDistance = Double.MAX_VALUE;
+		Double shortestDistance = Double.POSITIVE_INFINITY;
 		for (int i = 0; i < points.size() - 1; i++) {
 			Point p1 = points.get(i);
 			for (int j = i + 1; j < points.size() && Math.abs(p1.y - points.get(j).y) < distance; j++) {
@@ -92,11 +96,18 @@ public class ClosestPoints {
 		return Math.sqrt(Math.pow((p2.x - p1.x), 2) + Math.pow((p2.y - p1.y), 2));
 	}
 
-	public static class SortPair implements Comparator<Point> {
+	public static class SortPairByX implements Comparator<Point> {
+		public int compare(Point p1, Point p2) {
+			if (p1.x < p2.x) return -1;
+			if (p1.x == p2.x) return 0;
+			return 1;
+		}
+	}
+
+	public static class SortPairByY implements Comparator<Point> {
 		public int compare(Point p1, Point p2) {
 			if (p1.y < p2.y) return -1;
-			if (p1.y == p2.y && p1.x < p2.x) return -1;
-			if (p1.y == p2.y && p1.x == p2.x) return 0;
+			if (p1.y == p2.y) return 0;
 			return 1;
 		}
 	}
