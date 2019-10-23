@@ -15,7 +15,6 @@ public class ClosestPoints {
 		}
 
 		points.sort(new SortPairByX());
-		points.sort(new SortPairByY());
 
 		// If there are 2 or 3 points use brute force approach
 		if (points.size() <= 3) return bruteForce(points);
@@ -74,6 +73,7 @@ public class ClosestPoints {
 	}
 
 	public static List<Point> getClosestStripPoints(List<Point> points, Double distance) {
+		points.sort(new SortPairByY());
 		List<Point> closest = new ArrayList<>();
 		Double shortestDistance = Double.POSITIVE_INFINITY;
 		for (int i = 0; i < points.size() - 1; i++) {
