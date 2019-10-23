@@ -54,7 +54,7 @@ public class RiverSizes {
 
 	private static int getRiverIdx(int row, int col, int height, int width) {
 		validate(row, col, height, width);
-		return row * height + col;
+		return row * width + col;
 	}
 
 	// validate if site (row, col) is in range or not

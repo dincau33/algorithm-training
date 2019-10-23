@@ -181,6 +181,18 @@ class RiverSizesTest {
 		assertTrue(compare(output, expected));
 	}
 
+	@Test
+	public void TestCase13() {
+		int[][] input = {
+				{1, 0, 1},
+				{1, 1, 1}
+		};
+		int[] expected = {5};
+		ArrayList<Integer> output = RiverSizes.riverSizes(input);
+		Collections.sort(output);
+		assertTrue(compare(output, expected));
+	}
+
 	public static boolean compare(ArrayList<Integer> arr1, int[] arr2) {
 		if (arr1.size() != arr2.length) {
 			return false;
