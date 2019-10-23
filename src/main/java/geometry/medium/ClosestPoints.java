@@ -27,7 +27,7 @@ public class ClosestPoints {
 		List<Point> rightPair = closestPair(rightPoints);
 
 		// 3 - The closest pair is the pair among leftPair and rightPair that has the shortest distance.
-		List<Point> closest = norm(leftPair.get(0), leftPair.get(1)) <= norm(rightPair.get(0), rightPair.get(1)) ? leftPoints : rightPoints;
+		List<Point> closest = norm(leftPair.get(0), leftPair.get(1)) <= norm(rightPair.get(0), rightPair.get(1)) ? leftPair : rightPair;
 		Double shortestDistance = norm(closest.get(0), closest.get(1));
 
 		// 4 - Strip the points that are between the mid point and the shortest distance.

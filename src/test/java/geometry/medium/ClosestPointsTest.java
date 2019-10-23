@@ -59,6 +59,24 @@ class ClosestPointsTest {
 		verify(expected, result);
 	}
 
+	@Test
+	public void test04_Example() {
+
+		List<Point> points = Arrays.asList(
+				new Point(0.913020, -0.131023), //A
+				new Point(0, 1), //B
+				new Point(0.289120, -0.099594), //C
+				new Point(6, 3), //D
+				new Point(10, 14), //E
+				new Point(0.523534, 0.038864), //F
+				new Point(0.997912, -0.144335)  //G
+		);
+
+		List<Point> result = ClosestPoints.closestPair(points);
+		List<Point> expected = Arrays.asList(new Point(0.913020, -0.131023), new Point(0.997912, -0.144335));
+		verify(expected, result);
+	}
+
 	private void verify(List<Point> expected, List<Point> actual) {
 		Comparator<Point> comparer = Comparator.<Point>comparingDouble(p -> p.x);
 
