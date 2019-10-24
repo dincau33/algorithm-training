@@ -1,5 +1,10 @@
 package dynamicprogramming.medium;
 
+/*
+ * Given array of positive integers representing coin denominations and a single non-negative integer representing a target amount of money, implement a function that returns the smallest number of coins needed to make change for that target amount using the given coin denomination.
+ * Note that an unlimited amount of coins is at your disposal.
+ * If it is impossible to make change for the target amount, return -1.
+ */
 public class MinNumberOfWaysToMakeChange {
 	// O(n*d) time | O(n) : d is number of denominations and n is the target amount of money
 	public static int minNumberOfCoinsForChange(int n, int[] denoms) {
