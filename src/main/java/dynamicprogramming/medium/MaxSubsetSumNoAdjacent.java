@@ -1,7 +1,10 @@
 package dynamicprogramming.medium;
 
+/*
+ * Write a function that takes in an array of positive integers and returns and integer representing the maximum sum of non-adjacent elements in the array.
+ * If a sum cannot be generated, the function should return 0.
+ */
 public class MaxSubsetSumNoAdjacent {
-
 	// O(n) time | O(n) space
 	public static int maxSubsetSumNoAdjacent(int[] array) {
 		if (array.length == 0) return 0;
