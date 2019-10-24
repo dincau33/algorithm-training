@@ -2,6 +2,11 @@ package graph.medium;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
+/*
+ * You are given a Node class that has a name and an array of optional children Nodes.
+ * When put together, Nodes form a simple tree-like structure.
+ * Implement the breadthFirstSearch method on the Node class, which takes in an empty array, traverses the tree using the Breadth-first Search approach (specifically navigating the tree from left to right), stores all of the Nodes' names in the input array, and returns it.
+ */
 
 public class BreadthFirstSearch {
 	// Do not edit the class below except
