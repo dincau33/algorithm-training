@@ -8,7 +8,7 @@ public class PalindromeCheck {
     public static boolean isPalindrome(String str) {
         int len = str.length();
         String rev = "";
-        for (int i=len-1; i>=0; i--) {
+        for (int i = len - 1; i >= 0; i--) {
             rev += str.charAt(i);
         }
         return str.equals(rev);
