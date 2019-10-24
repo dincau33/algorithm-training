@@ -7,6 +7,7 @@ package binarysearchtree.medium;
  * A node is said to be a BST node if and only if it satisfies the BST property: its value is strictly greater than the values of every node to its left; its value is less than or equal to the values of every node to its right; and both of its children nodes are either BST nodes themselves or None (null) values.
  */
 public class BSTValidation {
+	// O(n) time | O(d) space - where n is the number of nodes in the BST and d is the depth of the BST
 	public static boolean validateBst(BST tree) {
 		return validateBst(tree, Integer.MIN_VALUE, Integer.MAX_VALUE);
 	}
