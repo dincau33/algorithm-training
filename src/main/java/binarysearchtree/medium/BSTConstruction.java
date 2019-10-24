@@ -1,5 +1,13 @@
 package binarysearchtree.medium;
 
+/*
+ * You are given a BST data structure consisting of BST nodes. Each BST node has an integer value stored in a property called "value" and two children nodes store din properties called "left" and "right", respectively.
+ * A node is said to be a BST node if and only if it satisfies the BST property:
+ * its value is strictly greater than the values of every node to its left;
+ * its value is less than or equal to the values of every node to is right;
+ * and both of its children nodes are either BST nodes themselves or None (null) values.
+ * The BST class should support insertion, searching, and removal of values. The removal method should only remove the first instance of the target value.
+ */
 public class BSTConstruction {
 	static class BST {
 		public int value;
