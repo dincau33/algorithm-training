@@ -2,11 +2,12 @@ package graph.easy;
 
 import java.util.ArrayList;
 
+/*
+ * You are given a Node class that has a name and a array of optional children Nodes.
+ * When put together, Nodes form a simple tree-like structure.
+ * Implement the depthFirstSearch method on the Node class, which takes in an empty array, traverses the tree using the Depth-first Search approach (specifically navigating the tree from left to right), stores all the of Nodes' names in the input array, and returns it.
+ */
 public class DepthFirstSearch {
-	// Do not edit the class below except
-	// for the depthFirstSearch method.
-	// Feel free to add new properties
-	// and methods to the class.
 	static class Node {
 		String name;
 		ArrayList<Node> children = new ArrayList<Node>();
