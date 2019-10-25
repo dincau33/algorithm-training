@@ -12,7 +12,7 @@ class KthNodeFromEndTest {
         TestLinkedList test = new TestLinkedList(0);
         test.addMany(new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9});
         int[] expected = {0, 1, 2, 3, 4, 5, 6, 7, 8};
-        KthNodeFromEnd.removeKthNodeFromEnd(test, 1);
+        RemoveKthNodeFromEnd.removeKthNodeFromEnd(test, 1);
         assertTrue(compare(test.getNodesInArray(), expected));
     }
 
@@ -21,7 +21,7 @@ class KthNodeFromEndTest {
         TestLinkedList test = new TestLinkedList(0);
         test.addMany(new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9});
         int[] expected = {0, 1, 2, 3, 4, 5, 6, 7, 9};
-        KthNodeFromEnd.removeKthNodeFromEnd(test, 2);
+        RemoveKthNodeFromEnd.removeKthNodeFromEnd(test, 2);
         assertTrue(compare(test.getNodesInArray(), expected));
     }
 
@@ -30,7 +30,7 @@ class KthNodeFromEndTest {
         TestLinkedList test = new TestLinkedList(0);
         test.addMany(new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9});
         int[] expected = {0, 1, 2, 3, 4, 5, 6, 8, 9};
-        KthNodeFromEnd.removeKthNodeFromEnd(test, 3);
+        RemoveKthNodeFromEnd.removeKthNodeFromEnd(test, 3);
         assertTrue(compare(test.getNodesInArray(), expected));
     }
 
@@ -39,7 +39,7 @@ class KthNodeFromEndTest {
         TestLinkedList test = new TestLinkedList(0);
         test.addMany(new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9});
         int[] expected = {0, 1, 2, 3, 4, 5, 7, 8, 9};
-        KthNodeFromEnd.removeKthNodeFromEnd(test, 4);
+        RemoveKthNodeFromEnd.removeKthNodeFromEnd(test, 4);
         assertTrue(compare(test.getNodesInArray(), expected));
     }
 
@@ -48,7 +48,7 @@ class KthNodeFromEndTest {
         TestLinkedList test = new TestLinkedList(0);
         test.addMany(new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9});
         int[] expected = {0, 1, 2, 3, 4, 6, 7, 8, 9};
-        KthNodeFromEnd.removeKthNodeFromEnd(test, 5);
+        RemoveKthNodeFromEnd.removeKthNodeFromEnd(test, 5);
         assertTrue(compare(test.getNodesInArray(), expected));
     }
 
@@ -57,7 +57,7 @@ class KthNodeFromEndTest {
         TestLinkedList test = new TestLinkedList(0);
         test.addMany(new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9});
         int[] expected = {0, 1, 2, 3, 5, 6, 7, 8, 9};
-        KthNodeFromEnd.removeKthNodeFromEnd(test, 6);
+        RemoveKthNodeFromEnd.removeKthNodeFromEnd(test, 6);
         assertTrue(compare(test.getNodesInArray(), expected));
     }
 
@@ -66,7 +66,7 @@ class KthNodeFromEndTest {
         TestLinkedList test = new TestLinkedList(0);
         test.addMany(new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9});
         int[] expected = {0, 1, 2, 4, 5, 6, 7, 8, 9};
-        KthNodeFromEnd.removeKthNodeFromEnd(test, 7);
+        RemoveKthNodeFromEnd.removeKthNodeFromEnd(test, 7);
         assertTrue(compare(test.getNodesInArray(), expected));
     }
 
@@ -75,7 +75,7 @@ class KthNodeFromEndTest {
         TestLinkedList test = new TestLinkedList(0);
         test.addMany(new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9});
         int[] expected = {0, 1, 3, 4, 5, 6, 7, 8, 9};
-        KthNodeFromEnd.removeKthNodeFromEnd(test, 8);
+        RemoveKthNodeFromEnd.removeKthNodeFromEnd(test, 8);
         assertTrue(compare(test.getNodesInArray(), expected));
     }
 
@@ -84,7 +84,7 @@ class KthNodeFromEndTest {
         TestLinkedList test = new TestLinkedList(0);
         test.addMany(new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9});
         int[] expected = {0, 2, 3, 4, 5, 6, 7, 8, 9};
-        KthNodeFromEnd.removeKthNodeFromEnd(test, 9);
+        RemoveKthNodeFromEnd.removeKthNodeFromEnd(test, 9);
         assertTrue(compare(test.getNodesInArray(), expected));
     }
 
@@ -93,7 +93,7 @@ class KthNodeFromEndTest {
         TestLinkedList test = new TestLinkedList(0);
         test.addMany(new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9});
         int[] expected = {1, 2, 3, 4, 5, 6, 7, 8, 9};
-        KthNodeFromEnd.removeKthNodeFromEnd(test, 10);
+        RemoveKthNodeFromEnd.removeKthNodeFromEnd(test, 10);
         assertTrue(compare(test.getNodesInArray(), expected));
     }
 
@@ -109,26 +109,26 @@ class KthNodeFromEndTest {
         return true;
     }
 
-    class TestLinkedList extends KthNodeFromEnd.LinkedList {
+    class TestLinkedList extends RemoveKthNodeFromEnd.LinkedList {
 
         public TestLinkedList(int value) {
             super(value);
         }
 
         public void addMany(int[] values) {
-            KthNodeFromEnd.LinkedList current = this;
+            RemoveKthNodeFromEnd.LinkedList current = this;
             while (current.next != null) {
                 current = current.next;
             }
             for (int value : values) {
-                current.next = new KthNodeFromEnd.LinkedList(value);
+                current.next = new RemoveKthNodeFromEnd.LinkedList(value);
                 current = current.next;
             }
         }
 
         public ArrayList<Integer> getNodesInArray() {
             ArrayList<Integer> nodes = new ArrayList<Integer>();
-            KthNodeFromEnd.LinkedList current = this;
+            RemoveKthNodeFromEnd.LinkedList current = this;
             while (current != null) {
                 nodes.add(current.value);
                 current = current.next;

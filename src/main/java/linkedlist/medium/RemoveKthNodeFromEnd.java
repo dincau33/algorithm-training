@@ -7,7 +7,7 @@ import java.util.NoSuchElementException;
  * The function should remove the kth node from th end of the list.
  * Note that every node in the Singly Linked List has a "value" property storing its value as well as a "next" property pointing to the next node in the list or None (null) if it is the tail of the list.
  */
-public class KthNodeFromEnd {
+public class RemoveKthNodeFromEnd {
     // O(n) time | O(1) space
     public static void removeKthNodeFromEnd(LinkedList head, int k) {
         if (head == null) throw new NullPointerException();
