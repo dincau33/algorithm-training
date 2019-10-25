@@ -52,6 +52,7 @@ public class MinHeapConstruction {
 
         // O(log (n)) time
         public int remove() {
+            if (heap.isEmpty()) throw new NoSuchElementException();
             int valueToRemove = heap.get(0);
             int lastValueIdx = heap.size() - 1;
             heap.set(0, heap.get(lastValueIdx));
