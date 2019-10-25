@@ -1,4 +1,5 @@
 package binarysearchtree.medium;
+
 /*
  * You are given a BST data structure consisting of BST nodes. Each BST node has an integer value stored in a property called "value" and two children nodes store din properties called "left" and "right", respectively.
  * A node is said to be a BST node if and only if it satisfies the BST property:

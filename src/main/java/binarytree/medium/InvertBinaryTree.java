@@ -8,26 +8,26 @@ import java.util.ArrayList;
  * Children nodes can either be Binary Tree nodes themselves or the None (null) value.
  */
 public class InvertBinaryTree {
-	// Complexity: O(n) time | O(n) space
-	public static void invertBinaryTree(BinaryTree tree) {
-		if (tree.left != null) invertBinaryTree(tree.left);
-		if (tree.right != null) invertBinaryTree(tree.right);
-		swapChildren(tree);
-	}
+    // Complexity: O(n) time | O(n) space
+    public static void invertBinaryTree(BinaryTree tree) {
+        if (tree.left != null) invertBinaryTree(tree.left);
+        if (tree.right != null) invertBinaryTree(tree.right);
+        swapChildren(tree);
+    }
 
-	private static void swapChildren(BinaryTree tree) {
-		BinaryTree tmp = tree.left;
-		tree.left = tree.right;
-		tree.right = tmp;
-	}
+    private static void swapChildren(BinaryTree tree) {
+        BinaryTree tmp = tree.left;
+        tree.left = tree.right;
+        tree.right = tmp;
+    }
 
-	static class BinaryTree {
-		public int value;
-		public BinaryTree left;
-		public BinaryTree right;
+    static class BinaryTree {
+        public int value;
+        public BinaryTree left;
+        public BinaryTree right;
 
-		public BinaryTree(int value) {
-			this.value = value;
-		}
-	}
+        public BinaryTree(int value) {
+            this.value = value;
+        }
+    }
 }

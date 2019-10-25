@@ -8,25 +8,26 @@ import java.util.Arrays;
  * Assume that there will only be one pair of numbers with the smallest difference.
  */
 public class SmallestDifference {
-	public static int[] smallestDifference(int[] arrayOne, int[] arrayTwo) {
-		// 0 - sorted arrays, : O(n*log(n)) | O(1)
-		int[] pair = {};
-		int currentMin = Integer.MAX_VALUE;
+    public static int[] smallestDifference(int[] arrayOne, int[] arrayTwo) {
+        // 0 - sorted arrays, : O(n*log(n)) | O(1)
+        int[] pair = {};
+        int currentMin = Integer.MAX_VALUE;
 
-		Arrays.sort(arrayOne);
-		Arrays.sort(arrayTwo);
+        Arrays.sort(arrayOne);
+        Arrays.sort(arrayTwo);
 
-		int i = 0;
-		int j = 0;
+        int i = 0;
+        int j = 0;
 
-		while (currentMin > 0 && i < arrayOne.length && j < arrayTwo.length) {
-			if (Math.abs(arrayOne[i] - arrayTwo[j]) < currentMin) {
-				currentMin = Math.abs(arrayOne[i] - arrayTwo[j]);
-				pair = new int[] {arrayOne[i], arrayTwo[j]};
-			}
-			if (arrayOne[i] < arrayTwo[j]) i++; else j++;
-		}
+        while (currentMin > 0 && i < arrayOne.length && j < arrayTwo.length) {
+            if (Math.abs(arrayOne[i] - arrayTwo[j]) < currentMin) {
+                currentMin = Math.abs(arrayOne[i] - arrayTwo[j]);
+                pair = new int[]{arrayOne[i], arrayTwo[j]};
+            }
+            if (arrayOne[i] < arrayTwo[j]) i++;
+            else j++;
+        }
 
-		return pair;
-	}
+        return pair;
+    }
 }

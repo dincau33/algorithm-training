@@ -17,7 +17,7 @@ public class ProductSum {
     private static int productSum(ArrayList<Object> array, int depth) {
         int sum = 0;
         depth++;
-        for (Object i:array) {
+        for (Object i : array) {
             if (i instanceof Integer) sum += (int) i;
             else {
                 sum += productSum((ArrayList<Object>) i, depth);

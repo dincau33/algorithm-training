@@ -66,7 +66,7 @@ public class LinkedListConstruction {
             }
             int currentPosition = 1;
             Node node = this.head;
-            while(node != null && currentPosition++ != position) node = node.next;
+            while (node != null && currentPosition++ != position) node = node.next;
             if (node != null) {
                 insertBefore(node, nodeToInsert);
             } else {
@@ -77,10 +77,10 @@ public class LinkedListConstruction {
         // O(n) time | O(1) space
         public void removeNodesWithValue(int value) {
             Node node = this.head;
-            while(node != null) {
+            while (node != null) {
                 Node nodeToRemove = node;
                 node = node.next;
-                if(nodeToRemove.value == value) remove(nodeToRemove);
+                if (nodeToRemove.value == value) remove(nodeToRemove);
             }
         }
 
@@ -97,7 +97,7 @@ public class LinkedListConstruction {
         // O(n) time | O(1) space
         public boolean containsNodeWithValue(int value) {
             Node node = this.head;
-            while(node != null && node.value != value) node = node.next;
+            while (node != null && node.value != value) node = node.next;
             return node != null;
         }
     }

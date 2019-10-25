@@ -10,46 +10,45 @@ package arrays.medium;
  * The sum of the lengths of these intervals is 7. Since [1, 4] and [3, 5] overlap, we can treat the interval as [1, 5], which has a length of 4.
  */
 public class SumOfIntervals {
-	public static int sumIntervals(int[][] intervals) {
-		int sum = 0;
-		if (intervals == null) return sum;
+    public static int sumIntervals(int[][] intervals) {
+        int sum = 0;
+        if (intervals == null) return sum;
 
-		sortIntervals(intervals);
-		int currentMaxRightBand = Integer.MIN_VALUE;
-		for (int[] interval:intervals) {
-			if (currentMaxRightBand <= interval[0]) {
-				sum += interval[1] - interval[0];
-				currentMaxRightBand = interval[1];
-			}
-			else if (currentMaxRightBand < interval[1]) {
-				sum += interval[1] - currentMaxRightBand;
-				currentMaxRightBand = interval[1];
-			}
-		}
-		return sum;
-	}
+        sortIntervals(intervals);
+        int currentMaxRightBand = Integer.MIN_VALUE;
+        for (int[] interval : intervals) {
+            if (currentMaxRightBand <= interval[0]) {
+                sum += interval[1] - interval[0];
+                currentMaxRightBand = interval[1];
+            } else if (currentMaxRightBand < interval[1]) {
+                sum += interval[1] - currentMaxRightBand;
+                currentMaxRightBand = interval[1];
+            }
+        }
+        return sum;
+    }
 
-	private static void sortIntervals(int[][] intervals) {
-		for (int i = 0; i < intervals.length - 1; i++) {
-			swap(intervals, i, findMinIdx(intervals, i));
-		}
-	}
+    private static void sortIntervals(int[][] intervals) {
+        for (int i = 0; i < intervals.length - 1; i++) {
+            swap(intervals, i, findMinIdx(intervals, i));
+        }
+    }
 
-	private static int findMinIdx(int[][] intervals, int start) {
-		int minIndex = start;
-		for (int i = start + 1; i < intervals.length; i++) {
-			if (intervals[i][0] < intervals[minIndex][0]) minIndex = i;
-			else if (intervals[i][0] == intervals[minIndex][0]) {
-				if (intervals[i][1] < intervals[minIndex][1]) minIndex = i;
-			}
-		}
-		return minIndex;
-	}
+    private static int findMinIdx(int[][] intervals, int start) {
+        int minIndex = start;
+        for (int i = start + 1; i < intervals.length; i++) {
+            if (intervals[i][0] < intervals[minIndex][0]) minIndex = i;
+            else if (intervals[i][0] == intervals[minIndex][0]) {
+                if (intervals[i][1] < intervals[minIndex][1]) minIndex = i;
+            }
+        }
+        return minIndex;
+    }
 
-	private static void swap(int[][] array, int i, int j) {
-		int tmp[] = array[i];
-		array[i] = array[j];
-		array[j] = tmp;
-	}
+    private static void swap(int[][] array, int i, int j) {
+        int tmp[] = array[i];
+        array[i] = array[j];
+        array[j] = tmp;
+    }
 
 }

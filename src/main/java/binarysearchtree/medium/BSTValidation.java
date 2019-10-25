@@ -7,24 +7,24 @@ package binarysearchtree.medium;
  * A node is said to be a BST node if and only if it satisfies the BST property: its value is strictly greater than the values of every node to its left; its value is less than or equal to the values of every node to its right; and both of its children nodes are either BST nodes themselves or None (null) values.
  */
 public class BSTValidation {
-	// O(n) time | O(d) space - where n is the number of nodes in the BST and d is the depth of the BST
-	public static boolean validateBst(BST tree) {
-		return validateBst(tree, Integer.MIN_VALUE, Integer.MAX_VALUE);
-	}
+    // O(n) time | O(d) space - where n is the number of nodes in the BST and d is the depth of the BST
+    public static boolean validateBst(BST tree) {
+        return validateBst(tree, Integer.MIN_VALUE, Integer.MAX_VALUE);
+    }
 
-	private static boolean validateBst(BST tree, int min, int max) {
-		if (tree == null) return true;
-		if (tree.value < min || tree.value > max) return false;
-		return validateBst(tree.left, min, tree.value - 1) && validateBst(tree.right, tree.value, max);
-	}
+    private static boolean validateBst(BST tree, int min, int max) {
+        if (tree == null) return true;
+        if (tree.value < min || tree.value > max) return false;
+        return validateBst(tree.left, min, tree.value - 1) && validateBst(tree.right, tree.value, max);
+    }
 
-	static class BST {
-		public int value;
-		public BST left;
-		public BST right;
+    static class BST {
+        public int value;
+        public BST left;
+        public BST right;
 
-		public BST(int value) {
-			this.value = value;
-		}
-	}
+        public BST(int value) {
+            this.value = value;
+        }
+    }
 }

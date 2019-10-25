@@ -17,9 +17,11 @@ public class YoungestCommonAncestor {
 
         int depthOne = pathToRootOne.size();
         int depthTwo = pathToRootTwo.size();
-        while(depthOne >=0 || depthTwo >= 0) {
-            if (pathToRootOne.get(pathToRootOne.size() - depthOne) == pathToRootTwo.get(pathToRootTwo.size() - depthTwo)) break;
-            if (depthTwo > depthOne) depthTwo--; else depthOne--;
+        while (depthOne >= 0 || depthTwo >= 0) {
+            if (pathToRootOne.get(pathToRootOne.size() - depthOne) == pathToRootTwo.get(pathToRootTwo.size() - depthTwo))
+                break;
+            if (depthTwo > depthOne) depthTwo--;
+            else depthOne--;
         }
         return pathToRootOne.get(pathToRootOne.size() - depthOne);
     }
