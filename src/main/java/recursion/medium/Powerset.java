@@ -7,7 +7,19 @@ import java.util.ArrayList;
  */
 public class Powerset {
     public static ArrayList<ArrayList<Integer>> powerset(ArrayList<Integer> array) {
-        // Write your code here.
-        return null;
+
+        ArrayList<ArrayList<Integer>> subset = new ArrayList<>();
+        subset.add(new ArrayList<>());
+
+        for (int element : array) {
+            int subsetSize = subset.size();
+            for (int i = 0; i < subsetSize;i++){
+                ArrayList<Integer> currentSubset = new ArrayList<>(subset.get(i));
+                currentSubset.add(element);
+                subset.add(currentSubset);
+            }
+        }
+
+        return subset;
     }
 }
