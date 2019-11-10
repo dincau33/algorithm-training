@@ -7,13 +7,38 @@ import java.util.ArrayList;
  */
 public class Powerset {
     public static ArrayList<ArrayList<Integer>> powerset(ArrayList<Integer> array) {
+        return powerset(array, array.size() - 1);
+    }
+
+    public static ArrayList<ArrayList<Integer>> powerset(ArrayList<Integer> array, int index) {
+
+        ArrayList<ArrayList<Integer>> subset = new ArrayList<>();
+
+        if (index < 0) {
+            subset.add(new ArrayList<>());
+            return subset;
+        }
+
+        subset = powerset(array, index - 1);
+        int element = array.get(index);
+        int subsetSize = subset.size();
+        for (int i = 0; i < subsetSize; i++) {
+            ArrayList<Integer> currentSubset = new ArrayList<>(subset.get(i));
+            currentSubset.add(element);
+            subset.add(currentSubset);
+        }
+
+        return subset;
+    }
+
+    public static ArrayList<ArrayList<Integer>> powersetIterative(ArrayList<Integer> array) {
 
         ArrayList<ArrayList<Integer>> subset = new ArrayList<>();
         subset.add(new ArrayList<>());
 
         for (int element : array) {
             int subsetSize = subset.size();
-            for (int i = 0; i < subsetSize;i++){
+            for (int i = 0; i < subsetSize; i++) {
                 ArrayList<Integer> currentSubset = new ArrayList<>(subset.get(i));
                 currentSubset.add(element);
                 subset.add(currentSubset);
