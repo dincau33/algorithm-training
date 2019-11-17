@@ -8,18 +8,13 @@ package search.medium;
 public class SearchInSortedMatrix {
     // Complexity: O(n + m) time | O(1) space
     public static int[] searchInSortedMatrix(int[][] matrix, int target) {
-        int[] targetIndices = new int[]{-1, -1};
         int row = 0;
         int col = matrix[row].length - 1;
-
         while (col >= 0 && row < matrix.length) {
-            if (matrix[row][col] == target) {
-                return new int[]{row, col};
-            }
+            if (matrix[row][col] == target) return new int[]{row, col};
             else if (matrix[row][col] < target) row++;
             else col--;
         }
-
-        return targetIndices;
+        return new int[]{-1, -1};
     }
 }
