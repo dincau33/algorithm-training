@@ -18,17 +18,20 @@ public class MinMaxStackConstruction {
         Stack<Integer> stack = new Stack<>();
         ArrayList<HashMap<String, Integer>> minMaxStack = new ArrayList<>();
 
+        // Complexity: O(1) time | O(n) space
         public Integer peek() {
             if (stack.size() <= 0) throw new NoSuchElementException();
             return stack.peek();
         }
 
+        // Complexity: O(1) time | O(n) space
         public Integer pop() {
             if (stack.size() <= 0) throw new NoSuchElementException();
             minMaxStack.remove(stack.size() - 1);
             return stack.pop();
         }
 
+        // Complexity: O(1) time | O(n) space
         public void push(Integer number) {
             int currentMin = number;
             int currentMax = number;
@@ -45,11 +48,13 @@ public class MinMaxStackConstruction {
             minMaxStack.add(currentMinMax);
         }
 
+        // Complexity: O(1) time | O(n) space
         public Integer getMin() {
             if (stack.size() <= 0) throw new NoSuchElementException();
             return minMaxStack.get(stack.size() - 1).get("min");
         }
 
+        // Complexity: O(1) time | O(n) space
         public Integer getMax() {
             if (stack.size() <= 0) throw new NoSuchElementException();
             return minMaxStack.get(stack.size() - 1).get("max");
