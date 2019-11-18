@@ -11,10 +11,6 @@ public class LongestPalindromicString {
 
     // Complexity: O(n^2) time | O(1) space
     public static String longestPalindromicSubstring(String str) {
-        return longestPalindromicSubstringHelper(str);
-    }
-
-    private static String longestPalindromicSubstringHelper(String str) {
         String longestStr = "";
         for (int startIdx = 0; startIdx < str.length(); startIdx++) {
             for (int endIdx = startIdx; endIdx < str.length(); endIdx++) {
