@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class LongestPalindromicStringTest {
     @Test
     public void TestCase1() {
-        assertTrue(LongestPalindromicString.longestPalindromicSubstring("a").equals("a"));
+        assertTrue(LongestPalindromicString.longestPalindromicSubstring("aba").equals("aba"));
     }
 
     @Test
@@ -67,5 +67,21 @@ class LongestPalindromicStringTest {
     @Test
     public void TestCase12() {
         assertTrue(LongestPalindromicString.longestPalindromicSubstring("z234a5abbba54a32z").equals("5abbba5"));
+    }
+
+    @Test
+    public void testIsPalindromic1() {
+        assertTrue(LongestPalindromicString.isPalindromic("a", 0, 0));
+        assertTrue(LongestPalindromicString.isPalindromic("aa", 0, 1));
+        assertTrue(LongestPalindromicString.isPalindromic("aaa", 0, 2));
+        assertTrue(LongestPalindromicString.isPalindromic("aba", 0, 2));
+        assertFalse(LongestPalindromicString.isPalindromic("aba", 0, 1));
+        assertFalse(LongestPalindromicString.isPalindromic("aba", 1, 2));
+        assertFalse(LongestPalindromicString.isPalindromic("ab", 0, 1));
+        assertTrue(LongestPalindromicString.isPalindromic("5abbba5", 0, 6));
+        assertTrue(LongestPalindromicString.isPalindromic("zz2345abbbba5432zz", 0, 17));
+        assertTrue(LongestPalindromicString.isPalindromic("zzzzzzzzzzzzzzzzzzzz", 0, 19));
+        assertTrue(LongestPalindromicString.isPalindromic("abaxyzzyxf", 3, 8));
+        assertFalse(LongestPalindromicString.isPalindromic("abaxyzzyxf", 2, 9));
     }
 }
