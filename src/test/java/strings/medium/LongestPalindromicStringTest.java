@@ -71,17 +71,15 @@ class LongestPalindromicStringTest {
 
     @Test
     public void testIsPalindromic1() {
-        assertTrue(LongestPalindromicString.isPalindromic("a", 0, 0));
-        assertTrue(LongestPalindromicString.isPalindromic("aa", 0, 1));
-        assertTrue(LongestPalindromicString.isPalindromic("aaa", 0, 2));
-        assertTrue(LongestPalindromicString.isPalindromic("aba", 0, 2));
-        assertFalse(LongestPalindromicString.isPalindromic("aba", 0, 1));
-        assertFalse(LongestPalindromicString.isPalindromic("aba", 1, 2));
-        assertFalse(LongestPalindromicString.isPalindromic("ab", 0, 1));
-        assertTrue(LongestPalindromicString.isPalindromic("5abbba5", 0, 6));
-        assertTrue(LongestPalindromicString.isPalindromic("zz2345abbbba5432zz", 0, 17));
-        assertTrue(LongestPalindromicString.isPalindromic("zzzzzzzzzzzzzzzzzzzz", 0, 19));
-        assertTrue(LongestPalindromicString.isPalindromic("abaxyzzyxf", 3, 8));
-        assertFalse(LongestPalindromicString.isPalindromic("abaxyzzyxf", 2, 9));
+        assertTrue(LongestPalindromicString.isPalindromic("a"));
+        assertTrue(LongestPalindromicString.isPalindromic("aa"));
+        assertTrue(LongestPalindromicString.isPalindromic("aaa"));
+        assertTrue(LongestPalindromicString.isPalindromic("aba"));
+        assertFalse(LongestPalindromicString.isPalindromic("ab"));
+        assertTrue(LongestPalindromicString.isPalindromic("5abbba5"));
+        assertTrue(LongestPalindromicString.isPalindromic("zz2345abbbba5432zz"));
+        assertTrue(LongestPalindromicString.isPalindromic("zzzzzzzzzzzzzzzzzzzz"));
+        assertFalse(LongestPalindromicString.isPalindromic("abaxyzzyxf"));
+        assertFalse(LongestPalindromicString.isPalindromic("axyzzyxf"));
     }
 }
