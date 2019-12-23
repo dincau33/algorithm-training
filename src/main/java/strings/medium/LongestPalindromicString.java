@@ -23,7 +23,7 @@ public class LongestPalindromicString {
         int mid = str.length() / 2;
         int i = 0;
         while (i < mid) {
-            if (str.charAt(i) != str.charAt(str.length() -1 - i)) return false;
+            if (str.charAt(i) != str.charAt(str.length() - 1 - i)) return false;
             i++;
         }
         return true;
