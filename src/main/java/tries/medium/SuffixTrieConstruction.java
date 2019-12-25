@@ -23,12 +23,29 @@ public class SuffixTrieConstruction {
         }
 
         public void populateSuffixTrieFrom(String str) {
-            // Write your code here.
+            for (int i = 0; i < str.length(); i++) populateSuffixTrieFromSubstring(i, str);
+        }
+
+        private void populateSuffixTrieFromSubstring(int i, String str) {
+            TrieNode node = root;
+            for (int j = i; j < str.length(); j++) {
+                if (node.children.containsKey(str.charAt(j))) node = node.children.get(str.charAt(j));
+                else {
+                    TrieNode newNode = new TrieNode();
+                    node.children.put(str.charAt(j), newNode);
+                    node = newNode;
+                }
+            }
+            node.children.put(endSymbol, null);
         }
 
         public boolean contains(String str) {
-            // Write your code here.
-            return false;
+            TrieNode node = root;
+            for (char c : str.toCharArray()) {
+                if (node.children.containsKey(c)) node = node.children.get(c);
+                else return false;
+            }
+            return node.children.containsKey(endSymbol) ? true : false;
         }
     }
 }
