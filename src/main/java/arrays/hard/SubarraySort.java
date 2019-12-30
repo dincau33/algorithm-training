@@ -6,6 +6,7 @@ package arrays.hard;
  * If the input array is already sorted, the function should return [-1, -1]
  */
 public class SubarraySort {
+	// Complexity: O(n) time | O(1) space
 	public static int[] subarraySort(int[] array) {
 		int i = 0;
 		int j = array.length - 1;
