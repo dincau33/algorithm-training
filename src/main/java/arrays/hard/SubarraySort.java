@@ -12,20 +12,21 @@ public class SubarraySort {
 		// Check whether the array is sorted
 		while (i < array.length -1 && array[i] <= array[i + 1]) i++;
 		while (j > 0 && array[j - 1] <= array[j]) j--;
-
+		// If the array is sorted return [-1, -1]
 		if (i > j) return new int[]{-1, -1};
 
-		int left = i;
-		int right = j;
+		// Find smallest and largest number out of place
 		int smallest = array[i + 1];
 		int largest = array[j - 1];
-		// Find smallest and largest number out of place
 		while (i < array.length) smallest = Math.min(smallest, array[i++]);
 		while (j >= 0) largest = Math.max(largest, array[j--]);
+		
 		// Find where smallest an largest number should be positioned
-		while (left > 0 && array[left - 1] > smallest) left--;
-		while (right < array.length - 1 && array[right + 1] < largest) right++;
+		int leftIdx = 0;
+		int rightIdx = array.length - 1;
+		while (array[leftIdx] <= smallest) leftIdx++;
+		while (array[rightIdx] >= largest) rightIdx--;
 
-		return new int[]{left, right};
+		return new int[]{leftIdx, rightIdx};
 	}
 }
