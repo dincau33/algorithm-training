@@ -1,6 +1,8 @@
 package arrays.hard;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 /*
  * Write a function that takes in an array of integers and returns an array of length2 representing the largest range of numbers contained in that array.
@@ -11,8 +13,38 @@ import java.util.Arrays;
  * Assume that there will only be one largest range
  */
 public class LargestRange {
-    // Solution 1 - Complexity: O(n * log(n) | O(1)
+    // Solution 1 - Complexity: O(n) time | O(n) space
     public static int[] largestRange(int[] array) {
+        if (array.length == 0) return new int[]{};
+
+        Map<Integer, Boolean> visitedInteger = preloadVisitedInteger(array);
+        int[] largestRange = new int[]{array[0], array[0]};
+
+        for (int num:array) {
+            int currentMin = num;
+            int currentMax = num;
+            while (visitedInteger.containsKey(currentMin - 1) && visitedInteger.get(currentMin - 1)) {
+                currentMin--;
+                visitedInteger.replace(num, false);
+            }
+            while (visitedInteger.containsKey(currentMax + 1) && visitedInteger.get(currentMax + 1)) {
+                currentMax++;
+                visitedInteger.replace(currentMax, false);
+            }
+            largestRange = maxRange(largestRange, new int[]{currentMin, currentMax});
+        }
+
+        return largestRange;
+    }
+
+    private static Map<Integer, Boolean> preloadVisitedInteger(int[] array) {
+        Map<Integer, Boolean> visitedInteger = new HashMap<>();
+        for(int num:array) visitedInteger.put(num, true);
+        return visitedInteger;
+    }
+
+    // Solution 2 - Complexity: O(n * log(n)) time | O(1) space
+    public static int[] largestRange2(int[] array) {
         if (array.length == 0) return new int[]{};
 
         Arrays.sort(array);
