@@ -8,6 +8,12 @@ import static org.junit.jupiter.api.Assertions.*;
 class LargestRangeTest {
 
     @Test
+    public void TestCase0() {
+        int[] expected = {};
+        assertTrue(Arrays.equals(LargestRange.largestRange(new int[] {}), expected));
+    }
+
+    @Test
     public void TestCase1() {
         int[] expected = {1, 1};
         assertTrue(Arrays.equals(LargestRange.largestRange(new int[] {1}), expected));
