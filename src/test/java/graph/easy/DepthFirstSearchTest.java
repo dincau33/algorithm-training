@@ -1,6 +1,7 @@
 package graph.easy;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -50,28 +51,28 @@ class DepthFirstSearchTest {
 	@Test
 	public void TestCase1() {
 		String[] expected = {"A", "B", "D", "C"};
-		ArrayList<String> inputArray = new ArrayList<String>();
+		List<String> inputArray = new ArrayList<String>();
 		assertTrue(compare(test1.depthFirstSearch(inputArray), expected));
 	}
 
 	@Test
 	public void TestCase2() {
 		String[] expected = {"A", "B", "C", "F", "D", "E"};
-		ArrayList<String> inputArray = new ArrayList<String>();
+		List<String> inputArray = new ArrayList<String>();
 		assertTrue(compare(test2.depthFirstSearch(inputArray), expected));
 	}
 
 	@Test
 	public void TestCase3() {
 		String[] expected = {"A", "B", "C", "D", "F", "E"};
-		ArrayList<String> inputArray = new ArrayList<String>();
+		List<String> inputArray = new ArrayList<String>();
 		assertTrue(compare(test3.depthFirstSearch(inputArray), expected));
 	}
 
 	@Test
 	public void TestCase4() {
 		String[] expected = {"A", "B", "E", "F", "I", "J", "C", "D", "G", "K", "H"};
-		ArrayList<String> inputArray = new ArrayList<String>();
+		List<String> inputArray = new ArrayList<String>();
 		assertTrue(compare(test4.depthFirstSearch(inputArray), expected));
 	}
 
@@ -81,11 +82,11 @@ class DepthFirstSearchTest {
 				"A", "B", "E", "Q", "R", "F", "I", "J", "O", "C", "P", "D", "G", "K", "H", "L", "M", "S", "W",
 				"X", "Y", "Z", "T", "U", "V"
 		};
-		ArrayList<String> inputArray = new ArrayList<String>();
+		List<String> inputArray = new ArrayList<String>();
 		assertTrue(compare(test5.depthFirstSearch(inputArray), expected));
 	}
 
-	public static boolean compare(ArrayList<String> arr1, String[] arr2) {
+	public static boolean compare(List<String> arr1, String[] arr2) {
 		if (arr1.size() != arr2.length) {
 			return false;
 		}

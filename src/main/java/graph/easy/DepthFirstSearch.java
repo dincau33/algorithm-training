@@ -1,6 +1,7 @@
 package graph.easy;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /*
  * You are given a Node class that has a name and a array of optional children Nodes.
@@ -10,13 +11,13 @@ import java.util.ArrayList;
 public class DepthFirstSearch {
     static class Node {
         String name;
-        ArrayList<Node> children = new ArrayList<Node>();
+        List<Node> children = new ArrayList<Node>();
 
         public Node(String name) {
             this.name = name;
         }
 
-        public ArrayList<String> depthFirstSearch(ArrayList<String> array) {
+        public List<String> depthFirstSearch(List<String> array) {
             // O(V + E) time / O(V) space
             array.add(this.name);
             for (Node child : children) child.depthFirstSearch(array);
