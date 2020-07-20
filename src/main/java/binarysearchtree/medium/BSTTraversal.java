@@ -1,6 +1,6 @@
 package binarysearchtree.medium;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /*
  * You are given a BST data structure consisting of BST nodes. Each BST node has an integer value stored in a property called "value" and two children nodes store din properties called "left" and "right", respectively.
@@ -12,21 +12,21 @@ import java.util.ArrayList;
  */
 public class BSTTraversal {
     // O(n) time | O(n) space - where n is the number of nodes in the BST
-    public static ArrayList<Integer> inOrderTraverse(BST tree, ArrayList<Integer> array) {
+    public static List<Integer> inOrderTraverse(BST tree, List<Integer> array) {
         if (tree.left != null) array = inOrderTraverse(tree.left, array);
         array.add(tree.value);
         if (tree.right != null) array = inOrderTraverse(tree.right, array);
         return array;
     }
 
-    public static ArrayList<Integer> preOrderTraverse(BST tree, ArrayList<Integer> array) {
+    public static List<Integer> preOrderTraverse(BST tree, List<Integer> array) {
         array.add(tree.value);
         if (tree.left != null) array = preOrderTraverse(tree.left, array);
         if (tree.right != null) array = preOrderTraverse(tree.right, array);
         return array;
     }
 
-    public static ArrayList<Integer> postOrderTraverse(BST tree, ArrayList<Integer> array) {
+    public static List<Integer> postOrderTraverse(BST tree, List<Integer> array) {
         if (tree.left != null) array = postOrderTraverse(tree.left, array);
         if (tree.right != null) array = postOrderTraverse(tree.right, array);
         array.add(tree.value);

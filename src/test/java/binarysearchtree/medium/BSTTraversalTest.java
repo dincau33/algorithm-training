@@ -1,6 +1,7 @@
 package binarysearchtree.medium;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Arrays;
 
 import org.junit.jupiter.api.Test;
@@ -41,86 +42,86 @@ class BSTTraversalTest {
 
 	@Test
 	public void TestCase1() {
-		ArrayList<Integer> expected = new ArrayList<Integer>(Arrays.asList(5, 10, 15));
-		ArrayList<Integer> output = new ArrayList<Integer>();
+		List<Integer> expected = new ArrayList<Integer>(Arrays.asList(5, 10, 15));
+		List<Integer> output = new ArrayList<Integer>();
 		BSTTraversal.inOrderTraverse(this.test1, output);
 		assertTrue(this.compare(output, expected));
 	}
 
 	@Test
 	public void TestCase2() {
-		ArrayList<Integer> expected = new ArrayList<Integer>(Arrays.asList(1, 2, 5, 5, 10, 15, 22));
-		ArrayList<Integer> output = new ArrayList<Integer>();
+		List<Integer> expected = new ArrayList<Integer>(Arrays.asList(1, 2, 5, 5, 10, 15, 22));
+		List<Integer> output = new ArrayList<Integer>();
 		BSTTraversal.inOrderTraverse(this.test2, output);
 		assertTrue(this.compare(output, expected));
 	}
 
 	@Test
 	public void TestCase3() {
-		ArrayList<Integer> expected =
+		List<Integer> expected =
 				new ArrayList<Integer>(
 						Arrays.asList(
 								1, 1, 1, 1, 1, 2, 3, 5, 5, 15, 22, 100, 203, 204, 205, 206, 207, 208, 502, 55000));
-		ArrayList<Integer> output = new ArrayList<Integer>();
+		List<Integer> output = new ArrayList<Integer>();
 		BSTTraversal.inOrderTraverse(this.test3, output);
 		assertTrue(this.compare(output, expected));
 	}
 
 	@Test
 	public void TestCase4() {
-		ArrayList<Integer> expected = new ArrayList<Integer>(Arrays.asList(10, 5, 15));
-		ArrayList<Integer> output = new ArrayList<Integer>();
+		List<Integer> expected = new ArrayList<Integer>(Arrays.asList(10, 5, 15));
+		List<Integer> output = new ArrayList<Integer>();
 		BSTTraversal.preOrderTraverse(this.test1, output);
 		assertTrue(this.compare(output, expected));
 	}
 
 	@Test
 	public void TestCase5() {
-		ArrayList<Integer> expected = new ArrayList<Integer>(Arrays.asList(10, 5, 2, 1, 5, 15, 22));
-		ArrayList<Integer> output = new ArrayList<Integer>();
+		List<Integer> expected = new ArrayList<Integer>(Arrays.asList(10, 5, 2, 1, 5, 15, 22));
+		List<Integer> output = new ArrayList<Integer>();
 		BSTTraversal.preOrderTraverse(this.test2, output);
 		assertTrue(this.compare(output, expected));
 	}
 
 	@Test
 	public void TestCase6() {
-		ArrayList<Integer> expected =
+		List<Integer> expected =
 				new ArrayList<Integer>(
 						Arrays.asList(
 								100, 5, 2, 1, 1, 1, 1, 1, 3, 15, 5, 22, 502, 204, 203, 205, 207, 206, 208, 55000));
-		ArrayList<Integer> output = new ArrayList<Integer>();
+		List<Integer> output = new ArrayList<Integer>();
 		BSTTraversal.preOrderTraverse(this.test3, output);
 		assertTrue(this.compare(output, expected));
 	}
 
 	@Test
 	public void TestCase7() {
-		ArrayList<Integer> expected = new ArrayList<Integer>(Arrays.asList(5, 15, 10));
-		ArrayList<Integer> output = new ArrayList<Integer>();
+		List<Integer> expected = new ArrayList<Integer>(Arrays.asList(5, 15, 10));
+		List<Integer> output = new ArrayList<Integer>();
 		BSTTraversal.postOrderTraverse(this.test1, output);
 		assertTrue(this.compare(output, expected));
 	}
 
 	@Test
 	public void TestCase8() {
-		ArrayList<Integer> expected = new ArrayList<Integer>(Arrays.asList(1, 2, 5, 5, 22, 15, 10));
-		ArrayList<Integer> output = new ArrayList<Integer>();
+		List<Integer> expected = new ArrayList<Integer>(Arrays.asList(1, 2, 5, 5, 22, 15, 10));
+		List<Integer> output = new ArrayList<Integer>();
 		BSTTraversal.postOrderTraverse(this.test2, output);
 		assertTrue(this.compare(output, expected));
 	}
 
 	@Test
 	public void TestCase9() {
-		ArrayList<Integer> expected =
+		List<Integer> expected =
 				new ArrayList<Integer>(
 						Arrays.asList(
 								1, 1, 1, 1, 1, 3, 2, 5, 22, 15, 5, 203, 206, 208, 207, 205, 204, 55000, 502, 100));
-		ArrayList<Integer> output = new ArrayList<Integer>();
+		List<Integer> output = new ArrayList<Integer>();
 		BSTTraversal.postOrderTraverse(this.test3, output);
 		assertTrue(this.compare(output, expected));
 	}
 
-	private boolean compare(ArrayList<Integer> array1, ArrayList<Integer> array2) {
+	private boolean compare(List<Integer> array1, List<Integer> array2) {
 		if (array1.size() != array2.size()) {
 			return false;
 		}
