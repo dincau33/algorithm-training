@@ -3,6 +3,7 @@ package graph.medium;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -51,28 +52,28 @@ class BreadthFirstSearchTest {
 	@Test
 	public void TestCase1() {
 		String[] expected = {"A", "B", "C", "D"};
-		ArrayList<String> inputArray = new ArrayList<String>();
+		List<String> inputArray = new ArrayList<String>();
 		assertTrue(compare(test1.breadthFirstSearch(inputArray), expected));
 	}
 
 	@Test
 	public void TestCase2() {
 		String[] expected = {"A", "B", "C", "D", "E", "F"};
-		ArrayList<String> inputArray = new ArrayList<String>();
+		List<String> inputArray = new ArrayList<String>();
 		assertTrue(compare(test2.breadthFirstSearch(inputArray), expected));
 	}
 
 	@Test
 	public void TestCase3() {
 		String[] expected = {"A", "B", "C", "D", "E", "F"};
-		ArrayList<String> inputArray = new ArrayList<String>();
+		List<String> inputArray = new ArrayList<String>();
 		assertTrue(compare(test3.breadthFirstSearch(inputArray), expected));
 	}
 
 	@Test
 	public void TestCase4() {
 		String[] expected = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K"};
-		ArrayList<String> inputArray = new ArrayList<String>();
+		List<String> inputArray = new ArrayList<String>();
 		assertTrue(compare(test4.breadthFirstSearch(inputArray), expected));
 	}
 
@@ -82,11 +83,11 @@ class BreadthFirstSearchTest {
 				"A", "B", "C", "D", "L", "M", "E", "F", "O", "P", "G", "H", "S", "T", "U", "V", "Q", "R", "I",
 				"J", "K", "W", "X", "Y", "Z"
 		};
-		ArrayList<String> inputArray = new ArrayList<String>();
+		List<String> inputArray = new ArrayList<String>();
 		assertTrue(compare(test5.breadthFirstSearch(inputArray), expected));
 	}
 
-	public static boolean compare(ArrayList<String> arr1, String[] arr2) {
+	public static boolean compare(List<String> arr1, String[] arr2) {
 		if (arr1.size() != arr2.length) {
 			return false;
 		}

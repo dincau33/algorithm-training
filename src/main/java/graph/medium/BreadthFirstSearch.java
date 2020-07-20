@@ -2,6 +2,7 @@ package graph.medium;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 /*
  * You are given a Node class that has a name and an array of optional children Nodes.
  * When put together, Nodes form a simple tree-like structure.
@@ -15,14 +16,14 @@ public class BreadthFirstSearch {
     // and methods to the class.
     static class Node {
         String name;
-        ArrayList<Node> children = new ArrayList<Node>();
+        List<Node> children = new ArrayList<Node>();
 
         public Node(String name) {
             this.name = name;
         }
 
         // O(V + E) time | O (V) space
-        public ArrayList<String> breadthFirstSearch(ArrayList<String> array) {
+        public List<String> breadthFirstSearch(List<String> array) {
             LinkedList<Node> queue = new LinkedList<>();
 
             queue.add(this);
