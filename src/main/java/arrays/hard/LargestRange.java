@@ -43,6 +43,10 @@ public class LargestRange {
         return visitedInteger;
     }
 
+    private static int[] maxRange(int[] range1, int[] range2) {
+        return (range1[1] - range1[0]) >= (range2[1] - range2[0]) ? range1 : range2;
+    }
+
     // Solution 2 - Complexity: O(n * log(n)) time | O(1) space
     public static int[] largestRange2(int[] array) {
         if (array.length == 0) return new int[]{};
@@ -59,9 +63,5 @@ public class LargestRange {
         }
 
         return largestRange;
-    }
-
-    private static int[] maxRange(int[] range1, int[] range2) {
-        return (range1[1] - range1[0]) >= (range2[1] - range2[0]) ? range1 : range2;
     }
 }
